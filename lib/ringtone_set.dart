@@ -39,6 +39,14 @@ class RingtoneSet {
     return result;
   }
 
+  static Future<String> setRingtoneFromFile(File file) async {
+
+    final String result = await _channel
+        .invokeMethod('setRingtone', {"path":  file.path});
+
+    return result;
+  }
+
   static Future<String> setNotification(String asset) async {
     final path =
         '${(await getTemporaryDirectory()).path}/${asset.split('/').last}';
