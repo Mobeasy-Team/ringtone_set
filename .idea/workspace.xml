@@ -10,15 +10,21 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1fUjs4kSnnPRpdRpKyavqAptSlz" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="D:/Android" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.17" />
@@ -36,40 +42,28 @@
       <option name="presentableId" value="Default" />
       <updated>1596279768644</updated>
     </task>
+    <task id="LOCAL-00001" summary="- create addRingtoneFromFile method">
+      <created>1616438770073</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1616438770073</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="- create addRingtoneFromFile method" />
+    <option name="LAST_COMMIT_MESSAGE" value="- create addRingtoneFromFile method" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="283" y="204" width="966" height="571" key="#PSD" timestamp="1596281651137">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2227" y="0" key="CommitChangelistDialog2" timestamp="1616438766313">
+      <screen x="1920" y="0" width="1360" height="768" />
     </state>
-    <state x="283" y="204" width="966" height="571" key="#PSD/0.0.1920.1040@0.0.1920.1040" timestamp="1596281651137" />
-    <state x="739" y="252" key="FileChooserDialogImpl" timestamp="1596281649106">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2227" y="0" key="CommitChangelistDialog2/0.0.1536.864/1920.0.1360.768@1920.0.1360.768" timestamp="1616438766313" />
+    <state x="2192" y="117" key="Vcs.Push.Dialog.v2" timestamp="1616438771849">
+      <screen x="1920" y="0" width="1360" height="768" />
     </state>
-    <state x="739" y="252" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1596281649106" />
-    <state width="1877" height="237" key="GridCell.Tab.0.bottom" timestamp="1596279814829">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="237" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596279814829" />
-    <state width="1877" height="237" key="GridCell.Tab.0.center" timestamp="1596279814829">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="237" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596279814829" />
-    <state width="1877" height="237" key="GridCell.Tab.0.left" timestamp="1596279814828">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="237" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596279814828" />
-    <state width="1877" height="237" key="GridCell.Tab.0.right" timestamp="1596279814829">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="237" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596279814829" />
-    <state x="106" y="99" key="SettingsEditor" timestamp="1596281631488">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="106" y="99" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1596281631488" />
-    <state x="100" y="100" width="1720" height="838" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1596281632708">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="100" y="100" width="1720" height="838" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596281632708" />
+    <state x="2192" y="117" key="Vcs.Push.Dialog.v2/0.0.1536.864/1920.0.1360.768@1920.0.1360.768" timestamp="1616438771849" />
   </component>
 </project>
