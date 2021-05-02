@@ -97,7 +97,7 @@ public class RingtoneSetPlugin implements FlutterPlugin, MethodCallHandler {
         Uri uri = Uri.fromFile(mFile);
         ContentResolver cR = mContext.getContentResolver();
         String mime = cR.getType(uri);
-        if(mime == null)
+//        if(mime == null)
             mime = ".mp3";
 
         if (mFile.exists()) {      // file.exists
