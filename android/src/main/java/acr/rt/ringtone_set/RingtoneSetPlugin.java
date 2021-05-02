@@ -32,6 +32,7 @@ import android.content.ContentValues;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.util.Log;
 
 /**
  * RingtoneSetPlugin
@@ -97,14 +98,15 @@ public class RingtoneSetPlugin implements FlutterPlugin, MethodCallHandler {
         Uri uri = Uri.fromFile(mFile);
         ContentResolver cR = mContext.getContentResolver();
         String mime = cR.getType(uri);
-//        if(mime == null)
+        if(mime == null)
             mime = ".mp3";
 
+        Log.e("from set ringtone ","mime : "+mime);
         if (mFile.exists()) {      // file.exists
             ContentValues values = new ContentValues();
             values.put(MediaStore.MediaColumns.DATA, mFile.getAbsolutePath());
             values.put(MediaStore.MediaColumns.TITLE, "KolpacinoRingtone");
-            values.put(MediaStore.MediaColumns.MIME_TYPE, mime);
+            values.put(MediaStore.MediaColumns.MIME_TYPE, "audio/mpeg");
             values.put(MediaStore.MediaColumns.SIZE, mFile.length());
             values.put(MediaStore.Audio.Media.ARTIST, "Kolpaçino Sesleri");
             values.put(MediaStore.Audio.Media.IS_RINGTONE, !isNotif);
