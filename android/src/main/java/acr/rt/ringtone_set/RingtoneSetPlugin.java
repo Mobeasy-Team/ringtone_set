@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import android.Manifest;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
 import android.app.Activity;
@@ -88,15 +89,22 @@ public class RingtoneSetPlugin implements FlutterPlugin, MethodCallHandler {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void setThings(String path, boolean isNotif){
-        File file = new File(path);
+
         checkSystemWritePermission();
-        String s = path;
-        File mFile = new File(s);  // set File from path
+        File mFile = new File(path);// set File from path
+
+
+        Uri uri = Uri.fromFile(mFile);
+        ContentResolver cR = mContext.getContentResolver();
+        String mime = cR.getType(uri);
+        if(mime == null)
+            mime = ".mp3";
+
         if (mFile.exists()) {      // file.exists
             ContentValues values = new ContentValues();
             values.put(MediaStore.MediaColumns.DATA, mFile.getAbsolutePath());
             values.put(MediaStore.MediaColumns.TITLE, "KolpacinoRingtone");
-            values.put(MediaStore.MediaColumns.MIME_TYPE, "audio/mp3");
+            values.put(MediaStore.MediaColumns.MIME_TYPE, mime);
             values.put(MediaStore.MediaColumns.SIZE, mFile.length());
             values.put(MediaStore.Audio.Media.ARTIST, "Kolpaçino Sesleri");
             values.put(MediaStore.Audio.Media.IS_RINGTONE, !isNotif);

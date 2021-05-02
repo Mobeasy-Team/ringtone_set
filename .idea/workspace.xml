@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7acefe88-6bdb-4637-b98b-89560859559c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/acr/rt/ringtone_set/RingtoneSetPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/acr/rt/ringtone_set/RingtoneSetPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,21 +63,29 @@
       <option name="project" value="LOCAL" />
       <updated>1617201115069</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="- update pub">
+      <created>1617211715177</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1617211715177</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="- create addRingtoneFromFile method" />
-    <option name="LAST_COMMIT_MESSAGE" value="- create addRingtoneFromFile method" />
+    <MESSAGE value="- update pub" />
+    <option name="LAST_COMMIT_MESSAGE" value="- update pub" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2227" y="0" key="CommitChangelistDialog2" timestamp="1617201114255">
+    <state x="2227" y="0" key="CommitChangelistDialog2" timestamp="1617211712579">
       <screen x="1920" y="0" width="1360" height="768" />
     </state>
-    <state x="2227" y="0" key="CommitChangelistDialog2/0.0.1536.864/1920.0.1360.768@1920.0.1360.768" timestamp="1617201114255" />
-    <state x="2192" y="117" key="Vcs.Push.Dialog.v2" timestamp="1617201117123">
+    <state x="2227" y="0" key="CommitChangelistDialog2/0.0.1536.864/1920.0.1360.768@1920.0.1360.768" timestamp="1617211712579" />
+    <state x="2192" y="117" key="Vcs.Push.Dialog.v2" timestamp="1617211717083">
       <screen x="1920" y="0" width="1360" height="768" />
     </state>
-    <state x="2192" y="117" key="Vcs.Push.Dialog.v2/0.0.1536.864/1920.0.1360.768@1920.0.1360.768" timestamp="1617201117123" />
+    <state x="2192" y="117" key="Vcs.Push.Dialog.v2/0.0.1536.864/1920.0.1360.768@1920.0.1360.768" timestamp="1617211717083" />
   </component>
 </project>
