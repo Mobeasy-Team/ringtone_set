@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7acefe88-6bdb-4637-b98b-89560859559c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/acr/rt/ringtone_set/RingtoneSetPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/acr/rt/ringtone_set/RingtoneSetPlugin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +79,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619918826766</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="- update mime detect">
+      <created>1619968367364</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1619968367364</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -90,15 +96,15 @@
     <option name="LAST_COMMIT_MESSAGE" value="- update mime detect" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="347" y="0" key="CommitChangelistDialog2" timestamp="1619918825735">
+    <state x="347" y="0" key="CommitChangelistDialog2" timestamp="1619968366625">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="347" y="0" key="CommitChangelistDialog2/0.0.1536.864/1920.0.1360.768@0.0.1536.864" timestamp="1619918825735" />
+    <state x="347" y="0" key="CommitChangelistDialog2/0.0.1536.864/1920.0.1360.768@0.0.1536.864" timestamp="1619968366625" />
     <state x="2227" y="0" key="CommitChangelistDialog2/0.0.1536.864/1920.0.1360.768@1920.0.1360.768" timestamp="1617211712579" />
-    <state x="307" y="132" key="Vcs.Push.Dialog.v2" timestamp="1619918829763">
+    <state x="307" y="132" key="Vcs.Push.Dialog.v2" timestamp="1619968401749">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="307" y="132" key="Vcs.Push.Dialog.v2/0.0.1536.864/1920.0.1360.768@0.0.1536.864" timestamp="1619918829763" />
+    <state x="307" y="132" key="Vcs.Push.Dialog.v2/0.0.1536.864/1920.0.1360.768@0.0.1536.864" timestamp="1619968401749" />
     <state x="2192" y="117" key="Vcs.Push.Dialog.v2/0.0.1536.864/1920.0.1360.768@1920.0.1360.768" timestamp="1617211717083" />
   </component>
 </project>
