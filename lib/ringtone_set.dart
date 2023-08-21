@@ -18,40 +18,40 @@ class RingtoneSet {
     return path;
   }
 
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
+  static Future<String?> get platformVersion async {
+    final String? version = await _channel.invokeMethod('getPlatformVersion');
     return version;
   }
 
-  static Future<String> setRingtone(String asset) async {
+  static Future<String?> setRingtone(String asset) async {
     final path =
         '${(await getTemporaryDirectory()).path}/${asset.split('/').last}';
     final file = File(path);
     final assetload = await rootBundle.load(asset);
     await file.writeAsBytes((assetload).buffer.asUint8List());
 
-    final String result =
+    final String? result =
         await _channel.invokeMethod('setRingtone', {"path": path});
 
     return result;
   }
 
-  static Future<String> setRingtoneFromFile(File file) async {
+  static Future<String?> setRingtoneFromFile(File file) async {
 
-    final String result = await _channel
+    final String? result = await _channel
         .invokeMethod('setRingtone', {"path":  file.path});
 
     return result;
   }
 
-  static Future<String> setNotification(String asset) async {
+  static Future<String?> setNotification(String asset) async {
     final path =
         '${(await getTemporaryDirectory()).path}/${asset.split('/').last}';
     final file = File(path);
     final assetload = await rootBundle.load(asset);
     await file.writeAsBytes((assetload).buffer.asUint8List());
 
-    final String result =
+    final String? result =
         await _channel.invokeMethod('setNotification', {"path": path});
     return result;
   }
