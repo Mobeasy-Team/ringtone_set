@@ -2,16 +2,6 @@ package acr.rt.ringtone_set;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.core.app.ActivityCompat;
-
-import io.flutter.embedding.engine.plugins.FlutterPlugin;
-
-import io.flutter.plugin.common.MethodCall;
-import io.flutter.plugin.common.MethodChannel;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.PluginRegistry.Registrar;
-import io.flutter.plugin.common.BinaryMessenger;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -19,90 +9,69 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import android.Manifest;
 import android.content.ContentResolver;
-import android.content.Intent;
-import android.database.Cursor;
-import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
-import android.content.ContentUris;
+import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.content.ContentValues;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
 
-/**
- * RingtoneSetPlugin
- */
+import io.flutter.embedding.engine.plugins.FlutterPlugin;
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.plugin.common.BinaryMessenger;
+
+/** RingtoneSetPlugin */
 public class RingtoneSetPlugin implements FlutterPlugin, MethodCallHandler {
-    private static RingtoneSetPlugin instance;
     private MethodChannel channel;
     private Context mContext;
 
-    public static void registerWith(Registrar registrar) {
-        if (instance == null) {
-            instance = new RingtoneSetPlugin();
-        }
-        instance.onAttachedToEngine(registrar.context(), registrar.messenger());
-    }
-
     @Override
-    public void onAttachedToEngine(FlutterPluginBinding binding) {
-        onAttachedToEngine(binding.getApplicationContext(), binding.getBinaryMessenger());
+    public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
+        mContext = binding.getApplicationContext();
+        setupChannel(binding.getBinaryMessenger());
     }
 
-    public void onAttachedToEngine(Context applicationContext, BinaryMessenger messenger) {
-        if (channel != null) {
-            return;
-        }
-        this.mContext = applicationContext;
+    private void setupChannel(BinaryMessenger messenger) {
+        if (channel != null) return;
 
-        channel =
-                new MethodChannel(
-                        messenger, "ringtone_set");
-
+        channel = new MethodChannel(messenger, "ringtone_set");
         channel.setMethodCallHandler(this);
     }
 
     private boolean checkSystemWritePermission() {
-        boolean retVal = true;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            retVal = Settings.System.canWrite(mContext);
-
-            if (retVal) {
-                //do your code
-            } else {
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                    Intent intent = new Intent(android.provider.Settings.ACTION_MANAGE_WRITE_SETTINGS);
-                    String both = "package:" + mContext.getPackageName();
-                    intent.setData(Uri.parse(both));
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    mContext.startActivity(intent);
-                } else {
-                }
+            boolean hasPermission = Settings.System.canWrite(mContext);
+            if (!hasPermission) {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
+                intent.setData(Uri.parse("package:" + mContext.getPackageName()));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mContext.startActivity(intent);
             }
+            return hasPermission;
         }
-        return retVal;
+        return true;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    private void setThings(String path, boolean isNotif){
-
+    private void setThings(String path, boolean isNotif) {
         checkSystemWritePermission();
-        File mFile = new File(path);// set File from path
-
+        File mFile = new File(path);
 
         Uri uri = Uri.fromFile(mFile);
         ContentResolver cR = mContext.getContentResolver();
         String mime = cR.getType(uri);
-        if(mime == null)
-            mime = ".mp3";
+        if (mime == null) mime = ".mp3";
 
-        Log.e("from set ringtone ","mime : "+mime);
-        if (mFile.exists()) {      // file.exists
+        Log.e("setThings", "MIME: " + mime);
+
+        if (mFile.exists()) {
             ContentValues values = new ContentValues();
             values.put(MediaStore.MediaColumns.DATA, mFile.getAbsolutePath());
             values.put(MediaStore.MediaColumns.TITLE, "KolpacinoRingtone");
@@ -114,32 +83,26 @@ public class RingtoneSetPlugin implements FlutterPlugin, MethodCallHandler {
             values.put(MediaStore.Audio.Media.IS_ALARM, true);
             values.put(MediaStore.Audio.Media.IS_MUSIC, false);
 
-            Uri newUri = mContext.getContentResolver().insert(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, values);
+            Uri newUri = cR.insert(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, values);
 
-            try (OutputStream os = mContext.getContentResolver().openOutputStream(newUri)) {
+            try (OutputStream os = cR.openOutputStream(newUri)) {
                 int size = (int) mFile.length();
                 byte[] bytes = new byte[size];
-                try {
-                    BufferedInputStream buf = new BufferedInputStream(new FileInputStream(mFile));
-                    buf.read(bytes, 0, bytes.length);
-                    buf.close();
+                BufferedInputStream buf = new BufferedInputStream(new FileInputStream(mFile));
+                buf.read(bytes, 0, bytes.length);
+                buf.close();
 
-                    os.write(bytes);
-                    os.close();
-                    os.flush();
-                } catch (IOException e) {
-                }
-            } catch (Exception ignored) {
-                ignored.printStackTrace();
-            }
-            if(isNotif) {
+                os.write(bytes);
+                os.flush();
+                os.close();
+
                 RingtoneManager.setActualDefaultRingtoneUri(
-                        mContext, RingtoneManager.TYPE_NOTIFICATION,
-                        newUri);
-            }else{
-                RingtoneManager.setActualDefaultRingtoneUri(
-                        mContext, RingtoneManager.TYPE_RINGTONE,
-                        newUri);
+                        mContext,
+                        isNotif ? RingtoneManager.TYPE_NOTIFICATION : RingtoneManager.TYPE_RINGTONE,
+                        newUri
+                );
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -147,28 +110,29 @@ public class RingtoneSetPlugin implements FlutterPlugin, MethodCallHandler {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
-        if (call.method.equals("getPlatformVersion")) {
-            result.success("Android " + android.os.Build.VERSION.RELEASE);
+        switch (call.method) {
+            case "getPlatformVersion":
+                result.success("Android " + Build.VERSION.RELEASE);
+                break;
+            case "setRingtone":
+                setThings(call.argument("path"), false);
+                result.success("success");
+                break;
+            case "setNotification":
+                setThings(call.argument("path"), true);
+                result.success("success");
+                break;
+            default:
+                result.notImplemented();
+                break;
         }
-        if (call.method.equals("setRingtone")) {
-            String path = call.argument("path");
-            setThings(path, false);
-
-            result.success("success");
-            return;
-        }else  if (call.method.equals("setNotification")) {
-            String path = call.argument("path");
-            setThings(path, true);
-
-            result.success("success");
-            return;
-        }
-
-        result.notImplemented();
     }
 
     @Override
     public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
-        channel.setMethodCallHandler(null);
+        if (channel != null) {
+            channel.setMethodCallHandler(null);
+            channel = null;
+        }
     }
 }
